@@ -1,17 +1,20 @@
-FROM python:3.8-buster
+FROM node:16
 LABEL maintainer "cristian.reyesf@cummins.cl"
+# Create app directory
+WORKDIR /usr/src/app
+# Install app dependencies
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+# where available (npm@5+)
+COPY ./project/src/package*.json ./
+
+RUN npm install
+# If you are building your code for production
+# RUN npm ci --only=production
+
+# Bundle app source
+COPY ./project/src/. .
+
 
 EXPOSE 80
-WORKDIR /app
-COPY ./project/frontend/requirements/requirements.txt /app
-#/app/requirements.txt
-COPY ./project/frontend/src /app
-RUN pip3 install -r requirements.txt
-#RUN pip3 install pandas
-#RUN pip3 install psycopg2
-#RUN pip3 install requests
-#RUN pip3 install numpy
-#RUN pip3 install boto3
-#ENTRYPOINT ["python3"]
-CMD ["python3", "index.py"]
-#CMD ["python3", "server.py"]
+
+CMD [ "node", "server.js" ]
