@@ -4,6 +4,6 @@ const frames = document.getElementById("frames");
 
 function showWelcomeMessage() {
   frames.src = "private/client/index.html?lang=es";
-  lander_pages.style.display = "none";
+  lander_pages.style.display = "none"; 
   main_page.style.display = "initial";
 }

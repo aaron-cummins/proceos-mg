@@ -12,7 +12,7 @@ RUN npm install
 # RUN npm ci --only=production
 
 # Bundle app source
-COPY ./project/src/. .
+COPY ./project/src/. . 
 
 
 EXPOSE 80

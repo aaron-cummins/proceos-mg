@@ -13,7 +13,7 @@ steps:
     repository: '$(repository)/$(Build.SourceBranchName)'
     command: 'build'
     Dockerfile: 'infrastructure/Dockerfile'
-    buildContext: '.'
+    buildContext: '.' 
     tags: |
       $(Build.BuildId)
       latest

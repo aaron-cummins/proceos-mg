@@ -15,7 +15,7 @@ const msalConfig = {
           return;
         }
         switch (level) {
-          case msal.LogLevel.Error:
+          case msal.LogLevel.Error: 
             console.error(message);
             return;
           case msal.LogLevel.Info:

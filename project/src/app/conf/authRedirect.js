@@ -14,7 +14,7 @@ myMSALObj
   .then(handleResponse)
   .catch((error) => {
     console.error(error);
-  });
+  }); 
 
 function selectAccount() {
   /**

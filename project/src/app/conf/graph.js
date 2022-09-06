@@ -10,7 +10,7 @@ function callMSGraph(endpoint, token, callback) {
 
   const options = {
     method: "GET",
-    headers: headers,
+    headers: headers, 
   };
 
   console.log("request made to Graph API at: " + new Date().toString());

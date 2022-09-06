@@ -3,7 +3,7 @@ const seguridad = () => {
     console.log("Tiene usuario y contraseña");
   } else {
     console.log("NOOO Tiene usuario y contraseña");
-    location.href = "/";
+    location.href = "/"; 
   }
 };
 
