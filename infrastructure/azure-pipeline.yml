@@ -1,0 +1,70 @@
+trigger:
+- qa
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+#### QA ###
+- task: Docker@2
+  inputs:
+    containerRegistry: '$(containerRegistryQA)'
+    repository: '$(repository)/$(Build.SourceBranchName)'
+    command: 'build'
+    Dockerfile: 'infrastructure/Dockerfile'
+    buildContext: '.'
+    tags: |
+      $(Build.BuildId)
+      latest
+  condition: eq(variables['Build.SourceBranchName'], 'qa')
+- task: Docker@2
+  inputs:
+    containerRegistry: '$(containerRegistryQA)'
+    repository: '$(repository)/$(Build.SourceBranchName)'
+    command: 'push'
+    tags: |
+      $(Build.BuildId)
+      latest
+  condition: eq(variables['Build.SourceBranchName'], 'qa')
+- task: Kubernetes@1
+  inputs:
+    connectionType: 'Kubernetes Service Connection'
+    kubernetesServiceEndpoint: '$(aksserviceendpointqa)'
+    namespace: '$(aksnamespaceqa)'
+    command: 'delete'
+    arguments: 'pods -l app=$(aksapplabelqa)'
+    secretType: 'dockerRegistry'
+    containerRegistryType: 'Azure Container Registry'
+  condition: eq(variables['Build.SourceBranchName'], 'qa')
+### Pro ###
+- task: Docker@2
+  inputs:
+    containerRegistry: '$(containerRegistryPro)'
+    repository: '$(repository)/$(Build.SourceBranchName)'
+    command: 'build'
+    Dockerfile: 'infrastructure/Dockerfile'
+    buildContext: '.'
+    tags: |
+      $(Build.BuildId)
+      latest
+  condition: eq(variables['Build.SourceBranchName'], 'master')
+- task: Docker@2
+  inputs:
+    containerRegistry: '$(containerRegistryPro)'
+    repository: '$(repository)/$(Build.SourceBranchName)'
+    command: 'push'
+    tags: |
+      $(Build.BuildId)
+      latest
+  condition: eq(variables['Build.SourceBranchName'], 'master')
+- task: Kubernetes@1
+  inputs:
+    connectionType: 'Kubernetes Service Connection'
+    kubernetesServiceEndpoint: '$(aksserviceendpointpro)'
+    namespace: '$(aksnamespacepro)'
+    command: 'delete'
+    arguments: 'pods -l app=$(aksapplabelpro)'
+    secretType: 'dockerRegistry'
+    containerRegistryType: 'Azure Container Registry'
+  condition: eq(variables['Build.SourceBranchName'], 'master')

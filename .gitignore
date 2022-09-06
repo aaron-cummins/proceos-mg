@@ -1,5 +1,5 @@
-node_modules
-app/private/client
-app/private/data
-app/private/images
-app/private/ci.jpg
+project/src/node_modules
+project/src/app/private/client
+project/src/app/private/data
+project/src/app/private/images
+project/src/app/private/ci.jpg
