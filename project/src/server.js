@@ -1,8 +1,9 @@
 const express = require("express");
 const morgan = require("morgan");
 const path = require("path");
+const { puerto } = require("./configuracion");
 
-const DEFAULT_PORT = process.env.PORT || 3000;
+const DEFAULT_PORT = puerto || 3000;
 
 // initialize express.
 const app = express();
@@ -23,5 +24,5 @@ app.get((req, res) => {
 
 // Start the server.
 app.listen(port, () => {
-  console.log(`Listening on port ${port}...`); 
+  console.log(`Listening on port ${port}...`);
 });
