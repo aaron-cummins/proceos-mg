@@ -43,10 +43,11 @@ function handleResponse(response) {
   if (response !== null) {
     username = response.account.username;
 
-    localStorage.setItem("name", response.account.name);
-    localStorage.setItem("username", username);
+    sessionStorage.setItem("name", response.account.name);
+    sessionStorage.setItem("username", username);
 
-    showWelcomeMessage();
+    window.location.href = "/2-Portada.html"
+    //showWelcomeMessage();
   } else {
     selectAccount();
   }
@@ -68,7 +69,7 @@ function signOut() {
 
   console.log("saliendo..");
   sessionStorage.clear();
-  localStorage.clear();
+  //localStorage.clear();
   /*const logoutRequest = {
     account: myMSALObj.getAccountByUsername(username),
     postLogoutRedirectUri: msalConfig.auth.redirectUri,

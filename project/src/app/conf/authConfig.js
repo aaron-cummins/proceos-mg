@@ -1,8 +1,12 @@
+//const auth = authoriti.then(res => res);
 const msalConfig = {
   auth: {
+    //clientId: window.sessionStorage.getItem("clid"), //process.env.AZURE_CLIENT_ID, //"50d41d72-284b-4340-b869-7cdfc7fcda7e",
+    //authority: window.sessionStorage.getItem("autho"), // "https://login.microsoftonline.com/common",
+    //redirectUri: window.sessionStorage.getItem("url"), // "http://localhost:3000/",
     clientId: "50d41d72-284b-4340-b869-7cdfc7fcda7e",
     authority: "https://login.microsoftonline.com/common",
-    redirectUri: "http://localhost:3000/",
+    redirectUri: "http://localhost:3000",
   },
   cache: {
     cacheLocation: "sessionStorage", // This configures where your cache will be stored
