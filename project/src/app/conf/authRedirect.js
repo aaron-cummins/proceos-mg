@@ -35,7 +35,7 @@ function selectAccount() {
     localStorage.setItem("name", currentAccounts[0].name);
     localStorage.setItem("username", username);
 
-    showWelcomeMessage();
+    //showWelcomeMessage();
   }
 }
 
