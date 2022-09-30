@@ -43,10 +43,20 @@ function handleResponse(response) {
   if (response !== null) {
     username = response.account.username;
 
-    sessionStorage.setItem("name", response.account.name);
-    sessionStorage.setItem("username", username);
+    getUser({email: username}).then(
+      res => {
+        if(res.status === true) {
+          sessionStorage.setItem("name", response.account.name);
+          sessionStorage.setItem("username", username);
 
-    window.location.href = "/2-Portada.html"
+          window.location.href = "/2-Portada.html" ;
+        } else {
+          signOut();
+        }
+      } );
+    //const entrar = getUser({email: username})
+    
+    //window.location.href = "/2-Portada.html"
     //showWelcomeMessage();
   } else {
     selectAccount();
