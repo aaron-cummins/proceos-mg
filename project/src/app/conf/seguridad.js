@@ -1,5 +1,5 @@
 const seguridad = () => {
-  if (sessionStorage.getItem("name") && sessionStorage.getItem("username")) {
+  if (localStorage.getItem("name") && localStorage.getItem("username")) {
     console.log("Tiene usuario y contraseña");
   } else {
     console.log("NOOO Tiene usuario y contraseña");
@@ -9,7 +9,7 @@ const seguridad = () => {
 
 function signOut() {
   console.log("saliendo..");
-  sessionStorage.clear();
+  localStorage.clear();
  };
 
 seguridad();

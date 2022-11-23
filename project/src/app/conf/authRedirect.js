@@ -46,8 +46,8 @@ function handleResponse(response) {
     getUser({email: username}).then(
       res => {
         if(res.status === true) {
-          sessionStorage.setItem("name", response.account.name);
-          sessionStorage.setItem("username", username);
+          localStorage.setItem("name", response.account.name);
+          localStorage.setItem("username", username);
 
           window.location.href = "/2-Portada.html" ;
         } else {
