@@ -298,7 +298,6 @@
 
   .u-section-2 .u-repeater-1 {
     min-height: 221px;
-    grid-auto-columns: calc(33.3333% - 20px);
   }
 
   .u-section-2 .u-icon-1 {
@@ -339,7 +338,6 @@
   .u-section-2 .u-repeater-1 {
     grid-template-columns: 100%;
     min-height: 522px;
-    grid-auto-columns: 100%;
   }
 
   .u-section-2 .u-icon-1 {
